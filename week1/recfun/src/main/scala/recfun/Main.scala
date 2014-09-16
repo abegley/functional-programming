@@ -18,7 +18,12 @@ object Main {
    * |k|     k!(n-k)!
    */
   def pascal(c: Int, r: Int): Int = {
-   factorial(r)/(factorial(c) * factorial(r-c))
+   //factorial(r)/(factorial(c) * factorial(r-c))
+   //recursive solution
+   if(c == 0 || c == r)
+     1
+   else
+     pascal(c-1, r-1) + pascal(c, r-1)
   }
 
   /**
