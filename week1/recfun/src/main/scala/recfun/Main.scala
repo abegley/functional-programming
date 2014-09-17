@@ -29,7 +29,21 @@ object Main {
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
+  def balance(chars: List[Char]): Boolean = {
+    def balance(chars:List[Char],  count:Int ): Boolean = {
+      if(chars.isEmpty && count == 0) true
+      else if ((chars.isEmpty && count != 0) || count < 0 ) false
+      else
+      {
+          chars.head match {
+          case '('  => balance(chars.tail, count+1)
+          case ')'  => balance(chars.tail, count-1)
+          case _    => balance(chars.tail,count)
+        }
+      }
+    }
+    balance(chars, 0)
+  }
 
   /**
    * Exercise 3
