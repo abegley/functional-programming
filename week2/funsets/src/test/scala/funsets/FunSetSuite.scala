@@ -112,15 +112,30 @@ class FunSetSuite extends FunSuite {
 
   test("intersect contains no elements") {
     new TestSets {
-      val s = intersect(s1, s2)
-      assert(!contains(s, 1), "Intersect set does not contain 1")
+      val intersectSet = intersect(s1, s2)
+      assert(!contains(intersectSet, 1), "Intersect set does not contain 1")
     }
   }
 
   test("intersect contains element"){
     new TestSets {
-      val s = intersect(s1,s1)
-      assert(contains(s, 1), "Intersect set contains 1")
+      val intersectSet = intersect(s1,s1)
+      assert(contains(intersectSet, 1), "Intersect set contains 1")
     }
+  }
+
+  test("diff contains element from first set"){
+    new TestSets {
+      val diffSet = diff(s1,s2)
+      assert(contains(diffSet,1), "diff set contains 1")
+    }
+  }
+
+  test("diff contains no elements when both sets are the same"){
+    new TestSets{
+      val diffSet = diff(s1,s1)
+      assert(!contains(diffSet,1), "nothing in diff set")
+    }
+
   }
 }
