@@ -77,6 +77,8 @@ class FunSetSuite extends FunSuite {
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
     val s3 = singletonSet(3)
+
+    val predicate = (x: Int) => x < 2
   }
 
   /**
@@ -136,6 +138,17 @@ class FunSetSuite extends FunSuite {
       val diffSet = diff(s1,s1)
       assert(!contains(diffSet,1), "nothing in diff set")
     }
-
   }
+
+  test("filter filters the set correctly") {
+    new TestSets {
+      val filteredSet1 = filter(s1, predicate )
+      val filteredSet2 = filter(s2, predicate )
+      val filteredSet3 = filter(s3, predicate)
+      assert(contains(filteredSet1, 1), "Should filter 1")
+      assert(!contains(filteredSet2, 2),  "Should not filter 2 ")
+      assert(!contains(filteredSet3, 3), "Should not filter 3")
+    }
+  }
+
 }
