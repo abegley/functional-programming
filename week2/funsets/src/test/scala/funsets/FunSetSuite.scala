@@ -109,4 +109,18 @@ class FunSetSuite extends FunSuite {
       assert(!contains(s, 3), "Union 3")
     }
   }
+
+  test("intersect contains no elements") {
+    new TestSets {
+      val s = intersect(s1, s2)
+      assert(!contains(s, 1), "Intersect set does not contain 1")
+    }
+  }
+
+  test("intersect contains element"){
+    new TestSets {
+      val s = intersect(s1,s1)
+      assert(contains(s, 1), "Intersect set contains 1")
+    }
+  }
 }
